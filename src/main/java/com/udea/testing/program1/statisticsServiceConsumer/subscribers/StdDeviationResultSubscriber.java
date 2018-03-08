@@ -25,7 +25,9 @@ public class StdDeviationResultSubscriber implements MessageListener {
         try {
             numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
 
-            System.out.println("udea.testing.result " + objectMapper.writeValueAsString(numberSet));
+            System.out.println("Conjunto: " + numberSet.getSet().toString() +
+                    "\nMedia: " + numberSet.getMean().toString() +
+                    "\nDesviación Estándar: " + numberSet.getStdDeviation());
         } catch (IOException e) {
             e.printStackTrace();
         }

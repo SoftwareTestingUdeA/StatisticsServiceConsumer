@@ -26,8 +26,7 @@ public class MeanResultSubscriber implements MessageListener {
             numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
 
             System.out.println("Conjunto: " + numberSet.getSet().toString() +
-                    "\nMedia: " + numberSet.getMean().toString() +
-                    "\nDesviación Estándar: " + numberSet.getStdDeviation());
+                    "\nMedia: " + numberSet.getMean().toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
