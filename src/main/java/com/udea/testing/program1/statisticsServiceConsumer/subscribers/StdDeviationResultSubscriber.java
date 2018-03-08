@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * @author William Hincapie - daemonsoft@gmail.com
+ * @author Juan Pablo Ospina - jpoh97@gmail.com
+ * @author Daniel Martinez - danielmartinezg95@gmail.com
+ * @version 0.1
+ */
 @Component
 public class StdDeviationResultSubscriber implements MessageListener {
 
@@ -23,39 +29,5 @@ public class StdDeviationResultSubscriber implements MessageListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(message.getBody());
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        Publisher publisher = new Publisher();
-//        NumberSet numberSet = null;
-//        try {
-//            numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
-//            Double mean = 0.0;
-//            Node node = numberSet.getSet().getFirst();
-//            while(node != null) {
-//                mean += node.getNumber();
-//                node.getLink();
-//            }
-//            //for (Double d : numberSet.getSet())
-//                //mean = mean + d;
-//            mean = mean / numberSet.getSet().getSize();
-//            numberSet.setMean(mean);
-//
-//            Double stdDeviation = 0.0;
-//            node = numberSet.getSet().getFirst();
-//            while(node != null) {
-//                mean += node.getNumber();
-//                stdDeviation += Math.pow(node.getNumber() - mean, 2);
-//                node.getLink();
-//            }
-//
-//            stdDeviation = Math.sqrt(stdDeviation / numberSet.getSet().getSize() - 1);
-//
-//            numberSet.setStdDeviation(stdDeviation);
-//
-//            publisher.publishMessageAsync("udea.testing.result", "stddeviation", objectMapper.writeValueAsString(numberSet));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        // System.out.println(new String("lastd  " + message.getMessageProperties()));
     }
 }
