@@ -1,17 +1,41 @@
 package com.udea.testing.program1.statisticsServiceConsumer.model;
 
+import java.util.List;
+
 public class NumberSet {
     String uuid;
-    NumberLinkedList set;
+    List<Double> set;
+    NumberLinkedList list;
     Double mean;
     Double stdDeviation;
 
-    public Double getStdDeviation() {
-        return stdDeviation;
+    public NumberSet() {
+        mean = 0.0;
+        stdDeviation = 0.0;
     }
 
-    public void setStdDeviation(Double stdDeviation) {
-        this.stdDeviation = stdDeviation;
+    public List<Double> getSet() {
+        return set;
+    }
+
+    public void setSet(List<Double> set) {
+        this.set = set;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public NumberLinkedList getList() {
+        return list;
+    }
+
+    public void setList(NumberLinkedList list) {
+        this.list = list;
     }
 
     public Double getMean() {
@@ -22,19 +46,42 @@ public class NumberSet {
         this.mean = mean;
     }
 
-    public NumberLinkedList getSet() {
-        return set;
+    public Double getStdDeviation() {
+        return stdDeviation;
     }
 
-    public void setSet(NumberLinkedList set) {
-        this.set = set;
+    public void setStdDeviation(Double stdDeviation) {
+        this.stdDeviation = stdDeviation;
     }
 
-    public String getUuid() {
-        return uuid;
+    public void calculateMean() {
+        Node node = this.getList().getFirst();
+        this.setMean(0.0);
+        while (node != null) {
+            this.mean = this.mean + node.getNumber();
+            node = node.getLink();
+        }
+
+        this.mean = this.mean / this.getList().getSize();
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void calculateStdDeviation() {
+        Node node = this.getList().getFirst();
+        this.setStdDeviation(0.0);
+        while (node != null) {
+            System.out.println("nodo " + node.getNumber() + " " + this.stdDeviation + " " + this.getMean());
+            this.stdDeviation = this.stdDeviation + Math.pow(node.getNumber() - this.getMean(), 2.0);
+            node = node.getLink();
+        }
+        this.stdDeviation = Math.sqrt(stdDeviation / (this.getList().getSize() - 1));
+        System.out.println("lalala " + this.stdDeviation + " " + this.getMean());
+    }
+
+    public void generateList() {
+        this.setList(new NumberLinkedList());
+        if (null != set)
+            for (Double d : set) {
+                this.getList().insert(d);
+            }
     }
 }

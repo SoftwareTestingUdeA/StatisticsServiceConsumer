@@ -15,15 +15,15 @@ public class MeanResultSubscriber implements MessageListener {
     @Override
     public void onMessage(Message message) {
 
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        NumberSet numberSet = null;
-//        try {
-//            numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
-//
-//            System.out.println("udea.testing.result " + objectMapper.writeValueAsString(numberSet));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        ObjectMapper objectMapper = new ObjectMapper();
+        NumberSet numberSet = null;
+        try {
+            numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
+
+            System.out.println("udea.testing.result " + objectMapper.writeValueAsString(numberSet));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println(message.getBody());
     }
 }

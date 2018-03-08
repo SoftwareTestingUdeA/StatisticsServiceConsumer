@@ -14,6 +14,16 @@ public class StdDeviationResultSubscriber implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        NumberSet numberSet = null;
+        try {
+            numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
+
+            System.out.println("udea.testing.result " + objectMapper.writeValueAsString(numberSet));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(message.getBody());
 //        ObjectMapper objectMapper = new ObjectMapper();
 //        Publisher publisher = new Publisher();
 //        NumberSet numberSet = null;
@@ -46,6 +56,6 @@ public class StdDeviationResultSubscriber implements MessageListener {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        System.out.println(new String("lastd  " + message.getMessageProperties()));
+        // System.out.println(new String("lastd  " + message.getMessageProperties()));
     }
 }
